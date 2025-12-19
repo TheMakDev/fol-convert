@@ -1,71 +1,22 @@
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Award, Download, Home } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface CertificateProps {
   score: number;
+  userName: string;
 }
 
-const Certificate = ({ score }: CertificateProps) => {
-  const [name, setName] = useState('');
-  const [showCertificate, setShowCertificate] = useState(false);
-
+const Certificate = ({ score, userName }: CertificateProps) => {
   const currentDate = new Date().toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric'
   });
 
-  const handleGenerate = () => {
-    if (name.trim()) {
-      setShowCertificate(true);
-    }
-  };
-
   const handlePrint = () => {
     window.print();
   };
-
-  if (!showCertificate) {
-    return (
-      <div className="max-w-md mx-auto text-center space-y-8 animate-fade-up">
-        <div className="w-20 h-20 mx-auto rounded-full bg-gold/20 flex items-center justify-center">
-          <Award className="w-10 h-10 text-gold" />
-        </div>
-
-        <div>
-          <h2 className="font-heading text-2xl font-bold text-foreground mb-2">
-            Claim Your Certificate
-          </h2>
-          <p className="text-muted-foreground">
-            Enter your name as you want it to appear on your certificate of completion.
-          </p>
-        </div>
-
-        <div className="space-y-4">
-          <Input
-            type="text"
-            placeholder="Enter your full name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="text-center text-lg py-6"
-            maxLength={50}
-          />
-          <Button
-            variant="gold"
-            size="lg"
-            className="w-full"
-            onClick={handleGenerate}
-            disabled={!name.trim()}
-          >
-            Generate Certificate
-          </Button>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="space-y-8 animate-fade-up">
@@ -103,10 +54,9 @@ const Certificate = ({ score }: CertificateProps) => {
             This is to certify that
           </p>
 
-          {/* Name */}
           <div className="py-4">
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground border-b-2 border-gold inline-block px-8 pb-2">
-              {name}
+              {userName}
             </h2>
           </div>
 
