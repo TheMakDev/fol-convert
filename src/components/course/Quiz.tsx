@@ -1,23 +1,45 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { QuizQuestion, PASS_THRESHOLD } from '@/data/courseData';
 import { Button } from '@/components/ui/button';
-import { CheckCircle2, XCircle, ChevronRight, RotateCcw } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { CheckCircle2, XCircle, ChevronRight, RotateCcw, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface QuizProps {
   questions: QuizQuestion[];
-  onComplete: (passed: boolean, score: number) => void;
+  onComplete: (passed: boolean, score: number, userName: string) => void;
 }
 
+// Fisher-Yates shuffle algorithm
+const shuffleArray = <T,>(array: T[]): T[] => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
+
 const Quiz = ({ questions, onComplete }: QuizProps) => {
+  const [userName, setUserName] = useState('');
+  const [hasStarted, setHasStarted] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({});
   const [showResults, setShowResults] = useState(false);
   const [score, setScore] = useState(0);
 
-  const currentQuestion = questions[currentQuestionIndex];
-  const hasAnswered = selectedAnswers[currentQuestion.id] !== undefined;
-  const isLastQuestion = currentQuestionIndex === questions.length - 1;
+  // Shuffle questions once when quiz starts
+  const shuffledQuestions = useMemo(() => shuffleArray(questions), [questions, hasStarted]);
+
+  const currentQuestion = shuffledQuestions[currentQuestionIndex];
+  const hasAnswered = selectedAnswers[currentQuestion?.id] !== undefined;
+  const isLastQuestion = currentQuestionIndex === shuffledQuestions.length - 1;
+
+  const handleStartQuiz = () => {
+    if (userName.trim()) {
+      setHasStarted(true);
+    }
+  };
 
   const handleSelectAnswer = (answerIndex: number) => {
     if (showResults) return;
@@ -31,7 +53,7 @@ const Quiz = ({ questions, onComplete }: QuizProps) => {
     if (isLastQuestion) {
       // Calculate score
       let correct = 0;
-      questions.forEach(q => {
+      shuffledQuestions.forEach(q => {
         if (selectedAnswers[q.id] === q.correctAnswer) {
           correct++;
         }
@@ -48,9 +70,10 @@ const Quiz = ({ questions, onComplete }: QuizProps) => {
     setSelectedAnswers({});
     setShowResults(false);
     setScore(0);
+    setHasStarted(false);
   };
 
-  const percentage = Math.round((score / questions.length) * 100);
+  const percentage = Math.round((score / shuffledQuestions.length) * 100);
   const passed = percentage >= PASS_THRESHOLD * 100;
 
   if (showResults) {
@@ -91,7 +114,7 @@ const Quiz = ({ questions, onComplete }: QuizProps) => {
         </div>
 
         {passed ? (
-          <Button variant="gold" size="lg" onClick={() => onComplete(true, percentage)}>
+          <Button variant="gold" size="lg" onClick={() => onComplete(true, percentage, userName)}>
             Get Your Certificate
           </Button>
         ) : (
@@ -109,18 +132,63 @@ const Quiz = ({ questions, onComplete }: QuizProps) => {
     );
   }
 
+  // Name input screen
+  if (!hasStarted) {
+    return (
+      <div className="max-w-md mx-auto text-center space-y-8 animate-fade-up">
+        <div className="w-20 h-20 mx-auto rounded-full bg-primary/10 flex items-center justify-center">
+          <User className="w-10 h-10 text-primary" />
+        </div>
+
+        <div>
+          <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-2">
+            Before You Begin
+          </h2>
+          <p className="text-muted-foreground">
+            Enter your name below. This will appear on your certificate if you pass.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <Input
+            type="text"
+            placeholder="Enter your full name"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+            className="text-center text-lg py-6"
+            onKeyDown={(e) => e.key === 'Enter' && handleStartQuiz()}
+          />
+          <Button
+            variant="gold"
+            size="lg"
+            onClick={handleStartQuiz}
+            disabled={!userName.trim()}
+            className="w-full"
+          >
+            Start Quiz
+            <ChevronRight className="w-5 h-5 ml-2" />
+          </Button>
+        </div>
+
+        <p className="text-sm text-muted-foreground">
+          {shuffledQuestions.length} questions • {PASS_THRESHOLD * 100}% to pass
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="max-w-2xl mx-auto space-y-8 animate-fade-up">
       {/* Progress */}
       <div className="space-y-2">
         <div className="flex justify-between text-sm text-muted-foreground">
-          <span>Question {currentQuestionIndex + 1} of {questions.length}</span>
-          <span>{Math.round(((currentQuestionIndex) / questions.length) * 100)}% complete</span>
+          <span>Question {currentQuestionIndex + 1} of {shuffledQuestions.length}</span>
+          <span>{Math.round(((currentQuestionIndex) / shuffledQuestions.length) * 100)}% complete</span>
         </div>
         <div className="h-2 bg-muted rounded-full overflow-hidden">
           <div
             className="h-full bg-primary transition-all duration-300"
-            style={{ width: `${((currentQuestionIndex) / questions.length) * 100}%` }}
+            style={{ width: `${((currentQuestionIndex) / shuffledQuestions.length) * 100}%` }}
           />
         </div>
       </div>

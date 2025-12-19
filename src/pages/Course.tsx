@@ -16,6 +16,7 @@ const Course = () => {
   const [quizPassed, setQuizPassed] = useState<boolean | null>(null);
   const [showCertificate, setShowCertificate] = useState(false);
   const [finalScore, setFinalScore] = useState(0);
+  const [userName, setUserName] = useState('');
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const currentLesson = lessons[currentLessonIndex];
@@ -50,9 +51,10 @@ const Course = () => {
     }
   };
 
-  const handleQuizComplete = (passed: boolean, score: number) => {
+  const handleQuizComplete = (passed: boolean, score: number, name: string) => {
     setQuizPassed(passed);
     setFinalScore(score);
+    setUserName(name);
     if (passed) {
       setShowCertificate(true);
     }
@@ -136,7 +138,7 @@ const Course = () => {
       )}>
         <div className="max-w-3xl mx-auto px-4 py-8 lg:py-16">
           {showCertificate ? (
-            <Certificate score={finalScore} />
+            <Certificate score={finalScore} userName={userName} />
           ) : showQuiz ? (
             <Quiz questions={quizQuestions} onComplete={handleQuizComplete} />
           ) : (
