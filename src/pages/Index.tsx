@@ -5,6 +5,8 @@ import FindChurchSection from '@/components/FindChurchSection';
 import MessagesSection from '@/components/MessagesSection';
 import AudioSection from '@/components/AudioSection';
 import DevotionalSection from '@/components/DevotionalSection';
+import ShortNotesSection from '@/components/ShortNotesSection';
+import LessonsSection from '@/components/LessonsSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 
@@ -19,6 +21,8 @@ const Index = () => {
         <MessagesSection />
         <AudioSection />
         <DevotionalSection />
+        <ShortNotesSection />
+        <LessonsSection />
         <ContactSection />
       </main>
       <Footer />
