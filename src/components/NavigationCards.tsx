@@ -1,5 +1,5 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { MapPin, Mic2, Headphones, BookOpen, MessageCircle, Heart } from 'lucide-react';
+import { MapPin, Mic2, Headphones, BookOpen, MessageCircle, StickyNote, GraduationCap } from 'lucide-react';
 
 interface NavCardProps {
   icon: React.ReactNode;
@@ -76,16 +76,22 @@ const NavigationCards = () => {
       href: '#devotional',
     },
     {
+      icon: <StickyNote className="w-8 h-8" />,
+      title: 'Short Notes',
+      description: 'Quick spiritual insights and foundational truths to strengthen your faith journey.',
+      href: '#short-notes',
+    },
+    {
+      icon: <GraduationCap className="w-8 h-8" />,
+      title: 'Lessons About Christianity',
+      description: 'Structured lessons to help you understand and grow in your Christian faith.',
+      href: '#lessons',
+    },
+    {
       icon: <MessageCircle className="w-8 h-8" />,
       title: 'Contact a Counsellor',
       description: 'Have questions? Our counsellors are here to guide and support you on your journey.',
       href: '#contact',
-    },
-    {
-      icon: <Heart className="w-8 h-8" />,
-      title: 'Join the Community',
-      description: 'Become part of our vibrant community of believers worldwide.',
-      href: '#community',
     },
   ];
 
