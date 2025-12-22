@@ -76,7 +76,7 @@ const LessonContent = ({ lesson, onComplete, isLastLesson }: LessonContentProps)
       {/* Complete Button */}
       <div className="pt-6 flex justify-end">
         <Button variant="gold" size="lg" onClick={onComplete}>
-          {isLastLesson ? 'Proceed to Quiz' : 'Complete & Continue'}
+          {isLastLesson ? 'Proceed to Quiz' : 'Next Lesson'}
         </Button>
       </div>
     </div>
