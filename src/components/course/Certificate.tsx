@@ -66,7 +66,6 @@ const Certificate = ({ score, userName }: CertificateProps) => {
             for new believers, demonstrating understanding of Christian fundamentals with a score of <strong className="text-primary">{score}%</strong>.
           </p>
 
-          {/* Date & Signature */}
           <div className="pt-8 flex justify-between items-end max-w-md mx-auto">
             <div className="text-left">
               <p className="text-sm text-muted-foreground">Date of Completion</p>
@@ -78,7 +77,6 @@ const Certificate = ({ score, userName }: CertificateProps) => {
             </div>
           </div>
 
-          {/* Scripture */}
           <div className="pt-6 border-t border-gold/30">
             <p className="text-sm italic text-muted-foreground">
               "Therefore, if anyone is in Christ, he is a new creation; old things have passed away; behold, all things have become new."
@@ -88,7 +86,6 @@ const Certificate = ({ score, userName }: CertificateProps) => {
         </div>
       </div>
 
-      {/* Action Buttons (hidden in print) */}
       <div className="flex flex-col sm:flex-row gap-4 justify-center print:hidden">
         <Button variant="gold" size="lg" onClick={handlePrint}>
           <Download className="w-5 h-5 mr-2" />
