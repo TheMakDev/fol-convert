@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import { Award, Download, Home } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -66,17 +67,24 @@ const Certificate = ({ score, userName }: CertificateProps) => {
             for new believers, demonstrating understanding of Christian fundamentals with a score of <strong className="text-primary">{score}%</strong>.
           </p>
 
-          <div className="pt-8 flex justify-between items-end max-w-md mx-auto">
+          {/* Date & Signature */}
+          <div className="pt-8 flex justify-between items-end max-w-lg mx-auto">
             <div className="text-left">
               <p className="text-sm text-muted-foreground">Date of Completion</p>
               <p className="font-medium text-foreground">{currentDate}</p>
             </div>
-            <div className="text-right">
-              <p className="font-heading text-xl italic text-gold">FOL Ministry</p>
-              <p className="text-sm text-muted-foreground">Redeemed Christian Church of God</p>
+            <div className="text-center">
+              {/* Signature */}
+              <p className="font-heading text-2xl italic text-primary" style={{ fontFamily: 'cursive' }}>
+                Pastor Jude Olisa
+              </p>
+              <div className="w-40 border-t border-gold mt-1 mb-2 mx-auto" />
+              <p className="text-sm font-medium text-foreground">Pastor Jude Olisa</p>
+              <p className="text-xs text-muted-foreground">Pastor in charge</p>
             </div>
           </div>
 
+          {/* Scripture */}
           <div className="pt-6 border-t border-gold/30">
             <p className="text-sm italic text-muted-foreground">
               "Therefore, if anyone is in Christ, he is a new creation; old things have passed away; behold, all things have become new."
@@ -86,6 +94,7 @@ const Certificate = ({ score, userName }: CertificateProps) => {
         </div>
       </div>
 
+      {/* Action Buttons (hidden in print) */}
       <div className="flex flex-col sm:flex-row gap-4 justify-center print:hidden">
         <Button variant="gold" size="lg" onClick={handlePrint}>
           <Download className="w-5 h-5 mr-2" />
