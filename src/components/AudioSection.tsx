@@ -24,13 +24,13 @@ const AudioSection = () => {
         >
           {/* Section Header */}
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-gold-light font-medium tracking-wide uppercase text-sm">
+            <span className="text-gold-light font-medium tracking-wide uppercase text-sm font-body">
               Listen & Learn
             </span>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mt-3 mb-4">
+            <h2 className="font-body text-3xl md:text-4xl font-bold mt-3 mb-4">
               Audio Messages
             </h2>
-            <p className="text-primary-foreground/80 text-lg">
+            <p className="text-primary-foreground/80 text-lg font-body">
               Take the Word with you wherever you go. Listen to life-changing 
               audio messages that will strengthen your faith.
             </p>
@@ -47,9 +47,9 @@ const AudioSection = () => {
                 </div>
 
                 {/* Track Info */}
-                <div className="flex-1 text-center md:text-left">
+                <div className="flex-1 text-center md:text-left font-body">
                   <p className="text-gold-light text-sm font-medium mb-1">Now Playing</p>
-                  <h3 className="font-heading text-2xl font-bold mb-1">
+                  <h3 className="font-body text-2xl font-bold mb-1">
                     {audioTracks[currentTrack].title}
                   </h3>
                   <p className="text-primary-foreground/70">
@@ -63,7 +63,7 @@ const AudioSection = () => {
                 <div className="h-2 bg-primary-foreground/20 rounded-full overflow-hidden">
                   <div className="h-full w-1/3 bg-accent rounded-full transition-all duration-300" />
                 </div>
-                <div className="flex justify-between text-sm text-primary-foreground/60 mt-2">
+                <div className="flex justify-between text-sm text-primary-foreground/60 mt-2 font-body">
                   <span>15:24</span>
                   <span>{audioTracks[currentTrack].duration}</span>
                 </div>
@@ -97,8 +97,8 @@ const AudioSection = () => {
             </div>
 
             {/* Playlist */}
-            <div className="bg-primary-foreground/5 rounded-xl overflow-hidden">
-              <h4 className="font-semibold p-4 border-b border-primary-foreground/10">
+            <div className="bg-primary-foreground/5 rounded-xl overflow-hidden font-body">
+              <h4 className="font-medium p-4 border-b border-primary-foreground/10">
                 Recommended for New Believers
               </h4>
               {audioTracks.map((track, index) => (

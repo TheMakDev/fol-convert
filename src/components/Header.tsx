@@ -35,7 +35,7 @@ const Header = () => {
           {/* Logo */}
           <a
             href="#"
-            className={`font-heading text-xl font-bold transition-colors ${
+            className={`font-body text-xl font-bold transition-colors ${
               isScrolled ? 'text-primary' : 'text-primary-foreground'
             }`}
           >
@@ -58,7 +58,9 @@ const Header = () => {
             <Button
               variant={isScrolled ? 'hero' : 'heroOutline'}
               size="sm"
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() =>
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+              }
             >
               Get Help
             </Button>
@@ -88,10 +90,14 @@ const Header = () => {
                   {link.name}
                 </a>
               ))}
-              <Button variant="hero" className="w-full" onClick={() => {
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                setIsMobileMenuOpen(false);
-              }}>
+              <Button
+                variant="hero"
+                className="w-full"
+                onClick={() => {
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                  setIsMobileMenuOpen(false);
+                }}
+              >
                 Get Help
               </Button>
             </div>

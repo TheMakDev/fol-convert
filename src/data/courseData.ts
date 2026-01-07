@@ -168,6 +168,31 @@ export const lessons: Lesson[] = [
       ],
       reflection: "Ask God to show you one area of your life where He wants to bring transformation. Surrender that area to Him and trust Him to change you."
     }
+  },
+  {
+    id: 7,
+    title: "The Importance of the Local Church",
+    duration: "18 min",
+    content: {
+      introduction: "God never intended for you to live the Christian life alone. The local church is not just a building or a weekly event - it's your spiritual family, a place where you belong, grow, and serve alongside other believers.",
+      mainContent: [
+        "When you gave your life to Christ, you became part of the global Body of Christ - the Church. But God also designed you to be connected to a local assembly of believers. The early Christians understood this and devoted themselves to meeting together regularly (Acts 2:42-47).",
+        "The local church provides essential elements for your spiritual growth: biblical teaching to build your faith, fellowship with other believers who understand your journey, accountability to help you stay on track, and opportunities to discover and use your God-given gifts.",
+        "Church is not about attending a service - it's about belonging to a family. In the church, you find pastors and leaders who guide you, fellow believers who encourage you, and brothers and sisters who pray with you through life's challenges and celebrate your victories.",
+        "Being part of a local church also means you have a role to play. Every believer has spiritual gifts given by the Holy Spirit to serve and strengthen the Body. When you actively participate in church life, you not only receive but also contribute to the growth of others."
+      ],
+      scripture: {
+        text: "And let us consider how to stir up one another to love and good works, not neglecting to meet together, as is the habit of some, but encouraging one another, and all the more as you see the Day drawing near.",
+        reference: "Hebrews 10:24-25"
+      },
+      keyPoints: [
+        "The local church is your spiritual family, not just a weekly event",
+        "You need the support, teaching, and accountability that church provides",
+        "Every believer has a role to play in the local church",
+        "Consistent fellowship with other believers is essential for spiritual growth"
+      ],
+      reflection: "If you haven't already, make a commitment to find and join a Bible-believing local church. Ask God to lead you to the right church family where you can grow, serve, and be connected."
+    }
   }
 ];
 
@@ -279,6 +304,17 @@ export const quizQuestions: QuizQuestion[] = [
       "It's spiritual food that nourishes our spirit",
       "It's required to stay saved",
       "It replaces the need for prayer"
+    ],
+    correctAnswer: 1
+  },
+  {
+    id: 11,
+    question: "Why is being part of a local church important?",
+    options: [
+      "It's optional for mature Christians",
+      "It provides fellowship, teaching, accountability, and opportunities to serve",
+      "Only to fulfill religious obligations",
+      "It's only necessary for new believers"
     ],
     correctAnswer: 1
   }

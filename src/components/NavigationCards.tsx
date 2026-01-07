@@ -25,13 +25,13 @@ const NavCard = ({ icon, title, description, href, delay }: NavCardProps) => {
         <div className="p-4 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
           {icon}
         </div>
-        <h3 className="font-heading text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+        <h3 className="font-body text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
           {title}
         </h3>
-        <p className="text-muted-foreground text-sm leading-relaxed">
+        <p className="text-muted-foreground text-sm leading-relaxed font-body">
           {description}
         </p>
-        <span className="inline-flex items-center text-accent font-medium text-sm group-hover:gap-2 transition-all">
+        <span className="inline-flex items-center text-accent font-medium text-sm font-body group-hover:gap-2 transition-all">
           Explore
           <svg
             className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform"
@@ -103,13 +103,13 @@ const NavigationCards = () => {
           ref={ref}
           className={`text-center max-w-2xl mx-auto mb-16 ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}
         >
-          <span className="text-accent font-medium tracking-wide uppercase text-sm">
+          <span className="text-accent font-medium tracking-wide uppercase text-sm font-body">
             Your Next Steps
           </span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-3 mb-4">
+          <h2 className="font-body text-3xl md:text-4xl font-bold text-foreground mt-3 mb-4">
             Begin Your Spiritual Journey
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-lg font-body">
             We have prepared resources to help you grow in your new life in Christ. 
             Explore these pathways to deepen your faith.
           </p>

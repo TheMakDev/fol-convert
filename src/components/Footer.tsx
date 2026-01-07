@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="section-container">
         {/* Scripture Quote */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <blockquote className="font-heading text-2xl md:text-3xl italic leading-relaxed">
+          <blockquote className="font-body text-2xl md:text-3xl italic leading-relaxed">
             "For God so loved the world that He gave His only begotten Son, 
             that whoever believes in Him should not perish but have everlasting life."
           </blockquote>
@@ -20,7 +20,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 text-center md:text-left mb-12">
           {/* About */}
           <div>
-            <h4 className="font-heading text-xl font-bold mb-4">FOL Converts Page</h4>
+            <h4 className="font-body text-xl font-bold mb-4">FOL Converts Page</h4>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
               A ministry dedicated to nurturing new believers and helping them 
               grow in their walk with Christ through the Redeemed Christian Church of God.
@@ -29,7 +29,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-heading text-xl font-bold mb-4">Quick Links</h4>
+            <h4 className="font-body text-xl font-bold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               {['Find a Church', 'Messages', 'Audio', 'Devotional', 'Contact'].map((link) => (
                 <li key={link}>
@@ -46,7 +46,7 @@ const Footer = () => {
 
           {/* Connect */}
           <div>
-            <h4 className="font-heading text-xl font-bold mb-4">Stay Connected</h4>
+            <h4 className="font-body text-xl font-bold mb-4">Stay Connected</h4>
             <p className="text-primary-foreground/70 text-sm mb-4">
               Join our community and never miss an update on your spiritual journey.
             </p>

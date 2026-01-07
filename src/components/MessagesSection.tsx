@@ -1,28 +1,28 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Play, Clock, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { ExternalLink, Play } from 'lucide-react';
 
 const MessagesSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
-  const messages = [
+  // Using the channel uploads playlist (UU prefix replaces UC in channel ID)
+  const uploadsPlaylistId = 'UUjjghk7bpRT-dd0WKoFaPhw';
+
+  const featuredContent = [
     {
-      title: 'The Power of New Beginnings',
-      date: 'December 15, 2024',
-      duration: '58 min',
-      category: 'Salvation',
+      title: 'Sunday Services',
+      description: 'Weekly worship services with Pastor E.A. Adeboye',
+      icon: '🙏',
     },
     {
-      title: 'Walking in Divine Purpose',
-      date: 'December 8, 2024',
-      duration: '1 hr 5 min',
-      category: 'Purpose',
+      title: 'Holy Ghost Services',
+      description: 'Monthly power-packed spiritual encounters',
+      icon: '🔥',
     },
     {
-      title: 'The Joy of the Redeemed',
-      date: 'December 1, 2024',
-      duration: '52 min',
-      category: 'Joy',
+      title: 'Special Programs',
+      description: 'Conventions, Congress and special events',
+      icon: '⭐',
     },
   ];
 
@@ -38,7 +38,7 @@ const MessagesSection = () => {
             <span className="text-accent font-medium tracking-wide uppercase text-sm">
               Spiritual Nourishment
             </span>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-3 mb-4">
+            <h2 className="font-body text-3xl md:text-4xl font-bold text-foreground mt-3 mb-4">
               Daddy G.O.'s Messages
             </h2>
             <p className="text-muted-foreground text-lg">
@@ -47,49 +47,67 @@ const MessagesSection = () => {
             </p>
           </div>
 
-          {/* Messages Grid */}
+          {/* Featured Video Player */}
+          <div className="max-w-4xl mx-auto mb-12">
+            <div className="aspect-video rounded-2xl overflow-hidden shadow-card bg-muted">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/6WH0BX2tK8w?list=PLY2UjBLMXLF3VRl9dnylBIe8wQDXemFvY"
+                title="RCCG Live - Latest Videos"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              />
+            </div>
+            <p className="text-center text-sm text-muted-foreground mt-3">
+              Latest uploads from RCCG Live YouTube channel
+            </p>
+          </div>
+
+          {/* Featured Content Cards */}
           <div className="grid md:grid-cols-3 gap-6 mb-10">
-            {messages.map((message, index) => (
+            {featuredContent.map((item, index) => (
               <div
-                key={message.title}
-                className="group bg-card rounded-2xl overflow-hidden shadow-soft border border-border/30 hover:shadow-card hover:-translate-y-1 transition-all duration-300"
+                key={item.title}
+                className="group bg-card rounded-2xl overflow-hidden shadow-soft border border-border/30 hover:shadow-card hover:-translate-y-1 transition-all duration-300 p-6"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                {/* Thumbnail */}
-                <div className="relative h-48 bg-gradient-to-br from-primary to-red-custom-dark flex items-center justify-center">
-                  <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <button className="w-16 h-16 rounded-full bg-primary-foreground/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Play className="w-8 h-8 text-primary-foreground fill-current ml-1" />
-                  </button>
-                  <span className="absolute top-4 right-4 bg-accent text-accent-foreground text-xs font-medium px-3 py-1 rounded-full">
-                    {message.category}
-                  </span>
-                </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  <h3 className="font-heading text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-3">
-                    {message.title}
-                  </h3>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                    <span className="flex items-center">
-                      <Calendar className="w-4 h-4 mr-1" />
-                      {message.date}
-                    </span>
-                    <span className="flex items-center">
-                      <Clock className="w-4 h-4 mr-1" />
-                      {message.duration}
-                    </span>
-                  </div>
-                </div>
+                <div className="text-4xl mb-4">{item.icon}</div>
+                <h3 className="font-body text-lg font-semibold text-foreground mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  {item.description}
+                </p>
               </div>
             ))}
           </div>
 
           {/* CTA */}
-          <div className="text-center">
-            <Button variant="outline" size="lg">
-              View All Messages
+          <div className="text-center flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" asChild>
+              <a
+                href="https://www.youtube.com/@rccglive/videos"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="gap-2"
+              >
+                <Play className="w-4 h-4" />
+                Watch All Videos
+              </a>
+            </Button>
+            <Button variant="outline" size="lg" asChild>
+              <a
+                href="https://www.youtube.com/@rccglive?sub_confirmation=1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="gap-2"
+              >
+                <ExternalLink className="w-4 h-4" />
+                Subscribe to Channel
+              </a>
             </Button>
           </div>
         </div>

@@ -4,9 +4,12 @@ import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
 const ContactSection = () => {
   const { ref, isVisible } = useScrollAnimation();
   const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -14,13 +17,43 @@ const ContactSection = () => {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "A counsellor will reach out to you soon. God bless you!",
-    });
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setLoading(true);
+
+    try {
+      const res = await fetch(`${API_URL}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      toast({
+        title: "Message Sent!",
+        description: "A counsellor will reach out to you soon. God bless you!",
+      });
+
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+      });
+    } catch (err) {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again in a moment.",
+        variant: 'destructive',
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -166,9 +199,9 @@ const ContactSection = () => {
                   />
                 </div>
 
-                <Button type="submit" variant="hero" size="lg" className="w-full sm:w-auto">
+                <Button type="submit" variant="hero" size="lg" className="w-full sm:w-auto" disabled={loading}>
                   <Send className="w-5 h-5 mr-2" />
-                  Send Message
+                  {loading ? 'Sending...' : 'Send Message'}
                 </Button>
 
                 <p className="text-xs text-muted-foreground mt-4">

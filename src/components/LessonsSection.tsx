@@ -1,6 +1,7 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Play, Clock, BookMarked } from 'lucide-react';
+import { Clock, BookOpen, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 interface LessonCardProps {
   number: number;
@@ -17,49 +18,44 @@ const LessonCard = ({ number, title, description, duration, category, delay }: L
   return (
     <div
       ref={ref}
-      className={`group relative overflow-hidden bg-card rounded-2xl shadow-soft border border-border/30 
-        hover:shadow-card transition-all duration-300
+      className={`group relative bg-card rounded-2xl shadow-soft border border-border/30 
+        hover:shadow-card hover:border-primary/30 transition-all duration-300 p-6
         ${isVisible ? 'animate-fade-up opacity-100' : 'opacity-0'}`}
       style={{ animationDelay: `${delay}ms` }}
     >
-      {/* Lesson Number Badge */}
-      <div className="absolute top-4 left-4 z-10">
+      {/* Header with number and category */}
+      <div className="flex items-center justify-between mb-4">
         <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground font-bold text-lg">
           {number}
         </span>
+        <span className="px-3 py-1 bg-accent/10 text-accent rounded-full font-medium text-sm">
+          {category}
+        </span>
       </div>
 
-      {/* Thumbnail Area */}
-      <div className="relative h-40 bg-gradient-to-br from-primary/20 via-gold/10 to-accent/20 flex items-center justify-center">
-        <div className="w-16 h-16 rounded-full bg-card/90 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-          <Play className="w-8 h-8 text-primary ml-1" />
-        </div>
-      </div>
+      {/* Title */}
+      <h3 className="font-body text-xl font-semibold text-foreground group-hover:text-primary transition-colors mb-3">
+        {title}
+      </h3>
 
-      {/* Content */}
-      <div className="p-6 space-y-4">
-        <div className="flex items-center gap-3 text-sm">
-          <span className="px-3 py-1 bg-accent/10 text-accent rounded-full font-medium">
-            {category}
-          </span>
-          <span className="flex items-center gap-1 text-muted-foreground">
-            <Clock className="w-4 h-4" />
-            {duration}
-          </span>
-        </div>
+      {/* Description */}
+      <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+        {description}
+      </p>
 
-        <h3 className="font-heading text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
-          {title}
-        </h3>
-
-        <p className="text-muted-foreground text-sm leading-relaxed">
-          {description}
-        </p>
-
-        <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all">
-          <BookMarked className="w-4 h-4 mr-2" />
-          Start Lesson
-        </Button>
+      {/* Footer */}
+      <div className="flex items-center justify-between pt-4 border-t border-border/50">
+        <span className="flex items-center gap-2 text-muted-foreground text-sm">
+          <BookOpen className="w-4 h-4" />
+          <Clock className="w-4 h-4" />
+          {duration} read
+        </span>
+        <Link to="/course">
+          <Button variant="ghost" size="sm" className="group-hover:text-primary">
+            Read Lesson
+            <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+          </Button>
+        </Link>
       </div>
     </div>
   );
@@ -124,7 +120,7 @@ const LessonsSection = () => {
           <span className="text-accent font-medium tracking-wide uppercase text-sm">
             Grow Your Faith
           </span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-3 mb-4">
+          <h2 className="font-body text-3xl md:text-4xl font-bold text-foreground mt-3 mb-4">
             Lessons About Christianity
           </h2>
           <p className="text-muted-foreground text-lg">

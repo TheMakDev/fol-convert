@@ -25,13 +25,13 @@ const NoteCard = ({ icon, title, content, category, delay }: NoteCardProps) => {
           {icon}
         </div>
         <div className="space-y-2">
-          <span className="text-xs font-medium text-accent uppercase tracking-wide">
+          <span className="text-xs font-medium text-accent uppercase tracking-wide font-body">
             {category}
           </span>
-          <h3 className="font-heading text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+          <h3 className="font-body text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
             {title}
           </h3>
-          <p className="text-muted-foreground text-sm leading-relaxed">
+          <p className="text-muted-foreground text-sm leading-relaxed font-body">
             {content}
           </p>
         </div>
@@ -90,13 +90,13 @@ const ShortNotesSection = () => {
           ref={ref}
           className={`text-center max-w-2xl mx-auto mb-16 ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}
         >
-          <span className="text-accent font-medium tracking-wide uppercase text-sm">
+          <span className="text-accent font-medium tracking-wide uppercase text-sm font-body">
             Quick Insights
           </span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-3 mb-4">
+          <h2 className="font-body text-3xl md:text-4xl font-bold text-foreground mt-3 mb-4">
             Short Notes About Christianity
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-lg font-body">
             Simple truths to help you understand and grow in your new faith. 
             These foundational insights will strengthen your spiritual journey.
           </p>
