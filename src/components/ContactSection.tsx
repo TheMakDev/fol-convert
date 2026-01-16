@@ -68,7 +68,7 @@ const ContactSection = () => {
             <span className="text-accent font-medium tracking-wide uppercase text-sm">
               We're Here For You
             </span>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-3 mb-4">
+            <h2 className="font-body text-3xl md:text-4xl font-bold text-foreground mt-3 mb-4">
               Contact a Counsellor
             </h2>
             <p className="text-muted-foreground text-lg">
@@ -82,7 +82,7 @@ const ContactSection = () => {
             <div className="lg:col-span-2 space-y-6">
               <div className="bg-gradient-to-br from-primary to-red-custom-dark rounded-2xl p-8 text-primary-foreground">
                 <MessageCircle className="w-12 h-12 mb-4 text-gold-light" />
-                <h3 className="font-heading text-2xl font-bold mb-4">
+                <h3 className="font-body text-2xl font-bold mb-4">
                   We Would Love to Hear From You
                 </h3>
                 <p className="text-primary-foreground/80 mb-6">
@@ -97,7 +97,7 @@ const ContactSection = () => {
                     </div>
                     <div>
                       <p className="text-sm text-primary-foreground/60">Prayer Line</p>
-                      <p className="font-medium">+1 (800) GOD-HELP</p>
+                      <p className="font-medium">+44 5647 8789</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -106,7 +106,7 @@ const ContactSection = () => {
                     </div>
                     <div>
                       <p className="text-sm text-primary-foreground/60">Email</p>
-                      <p className="font-medium">counsellor@rccg.org</p>
+                      <p className="font-medium">counsellor@folfoundation.org</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">

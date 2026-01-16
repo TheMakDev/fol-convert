@@ -29,7 +29,8 @@ import { lessons } from '@/data/courseData';
 
 /* ================= CONFIG ================= */
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const API_URL =
+  import.meta.env.VITE_API_URL || 'https://fols-backend.onrender.com';
 
 /* ================= TYPES ================= */
 
@@ -101,11 +102,16 @@ const AdminDashboard = () => {
   /* ================= ACTIONS ================= */
 
   const handleLogout = async () => {
-    await fetch(`${API_URL}/api/admin/logout`, {
-      method: 'POST',
-      credentials: 'include',
-    });
-    navigate('/admin');
+    try {
+      await fetch(`${API_URL}/api/admin/logout`, {
+        method: 'POST',
+        credentials: 'include',
+      });
+    } catch (error) {
+      console.error('Logout failed:', error);
+    } finally {
+      navigate('/admin', { replace: true });
+    }
   };
 
   const handleDeleteStudent = async (id: string) => {
@@ -134,7 +140,9 @@ const AdminDashboard = () => {
     });
 
   const totalStudents = progress.length;
-  const completedStudents = progress.filter(p => p.certificateIssued).length;
+  const completedStudents = progress.filter(
+    p => p.certificateIssued
+  ).length;
   const inProgressStudents = progress.filter(
     p => !p.certificateIssued && p.completedLessons.length > 0
   ).length;
@@ -147,7 +155,7 @@ const AdminDashboard = () => {
       <header className="sticky top-0 z-50 bg-card border-b border-border">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between">
           <div className="flex items-center gap-4">
-            <h1 className="text-xl font-bold">Admin Dashboard</h1>
+            <h1 className="text-xl font-bold font-body">Admin Dashboard</h1>
             <Button size="sm" variant="ghost" onClick={refreshData}>
               <RefreshCw className="w-4 h-4" />
             </Button>
@@ -169,9 +177,24 @@ const AdminDashboard = () => {
       <main className="max-w-7xl mx-auto px-4 py-8">
         {/* Stats */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <Card><CardContent className="pt-6 flex gap-4"><Users />{totalStudents} Students</CardContent></Card>
-          <Card><CardContent className="pt-6 flex gap-4"><BookOpen />{inProgressStudents} In Progress</CardContent></Card>
-          <Card><CardContent className="pt-6 flex gap-4"><Award />{completedStudents} Certified</CardContent></Card>
+          <Card>
+            <CardContent className="pt-6 flex gap-4">
+              <Users />
+              {totalStudents} Students
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="pt-6 flex gap-4">
+              <BookOpen />
+              {inProgressStudents} In Progress
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="pt-6 flex gap-4">
+              <Award />
+              {completedStudents} Certified
+            </CardContent>
+          </Card>
 
           <Link to="/admin/messages">
             <Card className="hover:border-primary cursor-pointer">
@@ -186,16 +209,23 @@ const AdminDashboard = () => {
         {/* Students */}
         <Card>
           <CardHeader>
-            <CardTitle>Course Progress</CardTitle>
-            <CardDescription>Students enrolled in the course</CardDescription>
+            <CardTitle className='font-body'>Course Progress</CardTitle>
+            <CardDescription>
+              Students enrolled in the course
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <ScrollArea className="h-[500px] space-y-4">
               {progress.map(student => (
-                <div key={student.id} className="p-4 border rounded-lg">
+                <div key={student.id} className="p-4 border rounded-lg font-body">
                   <div className="flex justify-between">
                     <div>
-                      <h3 className="font-semibold">{student.userName}</h3>
+                      <h3 className="font-semibold font-body text-foreground uppercase">
+                        {student.userName}
+                        <span className="ml-2 text-sm text-muted-foreground font-body lowercase">
+                          ({student.email})
+                        </span>
+                      </h3>
                       <p className="text-sm text-muted-foreground flex items-center gap-1">
                         <Clock className="w-4 h-4" />
                         Started {formatDate(student.startedAt)}
@@ -204,21 +234,28 @@ const AdminDashboard = () => {
 
                     <div className="flex gap-2">
                       {student.certificateIssued ? (
-                        <Badge><Award className="w-3 h-3 mr-1" /> Certified</Badge>
+                        <Badge>
+                          <Award className="w-3 h-3 mr-1" /> Certified
+                        </Badge>
                       ) : (
                         <Badge variant="secondary">In Progress</Badge>
                       )}
                       <Button
                         size="icon"
                         variant="destructive"
-                        onClick={() => handleDeleteStudent(student.id)}
+                        onClick={() =>
+                          handleDeleteStudent(student.id)
+                        }
                       >
                         <Trash2 className="w-4 h-4" />
                       </Button>
                     </div>
                   </div>
 
-                  <Progress value={getProgressPercent(student)} className="mt-3" />
+                  <Progress
+                    value={getProgressPercent(student)}
+                    className="mt-3"
+                  />
 
                   {student.quizScore !== null && (
                     <div className="mt-2 flex items-center gap-2 text-sm">

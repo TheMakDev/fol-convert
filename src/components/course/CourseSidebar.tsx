@@ -27,7 +27,7 @@ const CourseSidebar = ({
     <div className="bg-card border-r border-border h-full overflow-y-auto">
       {/* Course Header */}
       <div className="p-6 border-b border-border">
-        <h2 className="font-heading text-lg font-semibold text-foreground">
+        <h2 className="font-body text-lg font-semibold text-foreground">
           Foundations of Faith
         </h2>
         <p className="text-sm text-muted-foreground mt-1">

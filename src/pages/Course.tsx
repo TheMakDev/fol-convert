@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Menu, X, Home, LogOut } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-const API_BASE_URL = "http://localhost:3000/api/students";
+const API_BASE_URL = "https://fols-backend.onrender.com/api/students";
 
 type Student = { id: string; fullName: string; email: string };
 
@@ -125,7 +125,7 @@ const Course = () => {
       <header className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border print:hidden">
         <div className="flex items-center justify-between px-4 py-3">
           <button onClick={() => setSidebarOpen(true)} className="p-2 hover:bg-muted rounded-lg"><Menu className="w-6 h-6" /></button>
-          <h1 className="font-heading font-semibold text-foreground">Foundations of Faith</h1>
+          <h1 className="font-body font-semibold text-foreground">Foundations of Faith</h1>
           <button onClick={handleLogout} className="p-2 hover:bg-muted rounded-lg"><LogOut className="w-6 h-6" /></button>
         </div>
       </header>

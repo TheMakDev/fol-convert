@@ -58,7 +58,7 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4 animate-fade-up delay-400">
             <Link to="/student/auth">
               <Button variant="gold" size="lg">
-                Click Here to Begin Your Journey
+                Start the Foundation Course
               </Button>
             </Link>
             <Button variant="heroOutline" size="lg" onClick={scrollToSections}>

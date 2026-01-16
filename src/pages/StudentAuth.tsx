@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -7,13 +7,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { BookOpen, User, Mail, Lock, AlertCircle, ArrowLeft } from 'lucide-react';
 
-const API_BASE_URL = "http://localhost:3000/api/students";
+const API_BASE_URL = "https://fols-backend.onrender.com/api/students";
 
 const StudentAuth = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<'login' | 'register'>('login');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+
+  const [showAccessMessage, setShowAccessMessage] = useState(true);
+  const [showWelcomeMessage, setShowWelcomeMessage] = useState(false);
 
   // Login form
   const [loginEmail, setLoginEmail] = useState('');
@@ -34,7 +37,7 @@ const StudentAuth = () => {
     try {
       const res = await fetch(`${API_BASE_URL}/login`, {
         method: 'POST',
-        credentials: 'include', // important to send cookies
+        credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: loginEmail, password: loginPassword }),
       });
@@ -84,7 +87,8 @@ const StudentAuth = () => {
         throw new Error(data.message || 'Registration failed');
       }
 
-      navigate('/course');
+      setShowWelcomeMessage(true);
+      setActiveTab('login');
     } catch (err: any) {
       setError(err.message);
     }
@@ -92,20 +96,75 @@ const StudentAuth = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4">
+    <div className="min-h-screen bg-background flex items-center justify-center p-4 relative">
+
+      {/* ACCESS MESSAGE OVERLAY */}
+      {showAccessMessage && (
+        <div className="absolute inset-0 bg-black/40 z-50 flex items-center justify-center p-4 animate-fade-in">
+          <div className="font-body bg-background rounded-xl p-6 max-w-sm text-center space-y-4 shadow-lg transform transition-all duration-300 scale-95 animate-fade-in">
+            <h2 className="text-lg  font-body font-semibold">
+              Welcome 
+            </h2>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Please kindly note that an account is required to continue your course.
+              If you already have an account, you may sign in below.
+              Otherwise, you are warmly invited to create one to begin learning.
+            </p>
+            <Button
+              onClick={() => setShowAccessMessage(false)}
+              className="w-full"
+            >
+              Continue
+            </Button>
+          </div>
+        </div>
+      )}
+
+      {/* WELCOME MESSAGE OVERLAY */}
+      {showWelcomeMessage && (
+        <div className="absolute inset-0 bg-black/40 z-50 flex items-center justify-center p-4 animate-fade-in">
+          <div className="bg-background rounded-xl p-6 max-w-sm text-center space-y-4 shadow-lg transform transition-all duration-300 scale-95 animate-fade-in">
+            <h2 className="text-lg font-body font-semibold">
+              🎉 Welcome to the Course
+            </h2>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Congratulations! Your account has been created successfully.
+              Please log in to continue your journey of learning and growth.
+            </p>
+            <Button
+              onClick={() => setShowWelcomeMessage(false)}
+              className="w-full"
+            >
+              Go to Login
+            </Button>
+          </div>
+        </div>
+      )}
+
       <div className="w-full max-w-md">
         <Card className="border-border shadow-soft">
           <CardHeader className="text-center space-y-4">
             <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
               <BookOpen className="w-8 h-8 text-primary" />
             </div>
-            <CardTitle className="font-heading text-2xl">Foundations of Faith</CardTitle>
+            <CardTitle className="font-body text-2xl">
+              Foundations of Faith
+            </CardTitle>
             <CardDescription>
-              {activeTab === 'login' ? 'Sign in to continue your course' : 'Create an account to start learning'}
+              {activeTab === 'login'
+                ? 'Sign in to continue your course'
+                : 'Create an account to start learning'}
             </CardDescription>
           </CardHeader>
+
           <CardContent>
-            <Tabs value={activeTab} onValueChange={(v) => { setActiveTab(v as 'login' | 'register'); setError(''); }}>
+            <Tabs
+              value={activeTab}
+              onValueChange={(v) => {
+                setActiveTab(v as 'login' | 'register');
+                setError('');
+              }}
+            >
               <TabsList className="grid w-full grid-cols-2 mb-6">
                 <TabsTrigger value="login">Sign In</TabsTrigger>
                 <TabsTrigger value="register">Register</TabsTrigger>
@@ -176,7 +235,9 @@ const StudentAuth = () => {
                         required
                       />
                     </div>
-                    <p className="text-xs text-muted-foreground">This name will appear on your certificate</p>
+                    <p className="text-xs text-muted-foreground">
+                      This name will appear on your certificate
+                    </p>
                   </div>
 
                   <div className="space-y-2">
@@ -236,7 +297,10 @@ const StudentAuth = () => {
             </Tabs>
 
             <div className="mt-6 text-center">
-              <Link to="/" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors">
+              <Link
+                to="/"
+                className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
                 <ArrowLeft className="w-4 h-4 mr-1" />
                 Back to Home
               </Link>

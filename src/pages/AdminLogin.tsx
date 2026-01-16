@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {  Link } from 'react-router-dom';
 import {
   Card,
   CardContent,
@@ -10,9 +11,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Lock, User, AlertCircle } from "lucide-react";
+import { Lock, User, AlertCircle ,ArrowLeft} from "lucide-react";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+const API_URL = import.meta.env.VITE_API_URL || "https://fols-backend.onrender.com";
 
 
 const AdminLogin = () => {
@@ -125,12 +126,18 @@ const AdminLogin = () => {
               </Button>
             </form>
 
-            <div className="mt-6 p-4 bg-muted/50 rounded-lg">
+            {/* <div className="mt-6 p-4 bg-muted/50 rounded-lg">
               <p className="text-xs text-muted-foreground text-center">
                 <strong>Demo Credentials:</strong>
                 <br />
                 Username: admin | Password: admin123
               </p>
+            </div> */}
+            <div className="mt-6 text-center">
+              <Link to="/" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors">
+                <ArrowLeft className="w-4 h-4 mr-1" />
+                Back to Home
+              </Link>
             </div>
           </CardContent>
         </Card>
