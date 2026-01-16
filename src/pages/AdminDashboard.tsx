@@ -152,27 +152,36 @@ const AdminDashboard = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-card border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between">
-          <div className="flex items-center gap-4">
-            <h1 className="text-xl font-bold font-body">Admin Dashboard</h1>
-            <Button size="sm" variant="ghost" onClick={refreshData}>
-              <RefreshCw className="w-4 h-4" />
-            </Button>
-          </div>
+     <header className="sticky top-0 z-50 bg-card border-b border-border">
+    <div className="max-w-7xl mx-auto px-4 py-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      
+      {/* Left section */}
+      <div className="flex items-center justify-between sm:justify-start gap-3">
+        <h1 className="text-lg sm:text-xl font-bold font-body">
+          Admin Dashboard
+        </h1>
 
-          <div className="flex gap-2">
-            <Link to="/">
-              <Button size="sm" variant="outline">
-                <Home className="w-4 h-4 mr-2" /> View Site
-              </Button>
-            </Link>
-            <Button size="sm" variant="destructive" onClick={handleLogout}>
-              <LogOut className="w-4 h-4 mr-2" /> Logout
-            </Button>
-          </div>
-        </div>
-      </header>
+        <Button size="icon" variant="ghost" onClick={refreshData}>
+          <RefreshCw className="w-4 h-4" />
+        </Button>
+      </div>
+
+      {/* Right section */}
+      <div className="flex gap-2 justify-end">
+        <Link to="/">
+          <Button size="sm" variant="outline">
+            <Home className="w-4 h-4 sm:mr-2" />
+            <span className="hidden sm:inline">View Site</span>
+          </Button>
+        </Link>
+
+        <Button size="sm" variant="destructive" onClick={handleLogout}>
+          <LogOut className="w-4 h-4 sm:mr-2" />
+          <span className="hidden sm:inline">Logout</span>
+        </Button>
+      </div>
+    </div>
+  </header>
 
       <main className="max-w-7xl mx-auto px-4 py-8">
         {/* Stats */}
