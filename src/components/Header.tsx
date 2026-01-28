@@ -39,7 +39,8 @@ const Header = () => {
               isScrolled ? 'text-primary' : 'text-primary-foreground'
             }`}
           >
-            FOL <span className="text-accent">Converts</span>
+            <img src="https://www.festivaloflife.org.uk/_next/image?url=%2Flogo.png&w=64&q=75"
+             alt="" />
           </a>
 
           {/* Desktop Navigation */}

@@ -200,6 +200,285 @@ export const lessons: Lesson[] = [
       ],
       reflection: "As a member of the body of Christ, commit to actively participating in your local church. Use your spiritual gifts to serve, maintain unity, and bear fruit that remains for God's glory."
     }
+  },
+  {
+    id: 3,
+    title: "Prayer and Communion with God",
+    duration: "25 min",
+    content: {
+      introduction: "Prayer is the spiritual lifeline that connects believers to God. It is the means by which we communicate with our Heavenly Father, presenting our requests, expressing gratitude, and aligning our hearts with His will. Jesus modeled a life of prayer and taught His disciples to pray.",
+      sections: [
+        {
+          title: "1. The Definition and Purpose of Prayer",
+          content: [
+            "Prayer is direct communication with God. It involves speaking to God and listening to Him through His Word and His Spirit.",
+            "**The Purpose of Prayer:** To worship and glorify God, to confess sins and receive forgiveness, to present our needs and petitions, to intercede for others, and to align our will with God's will.",
+            "Matthew 6:9-13 gives us the Lord's Prayer as a model for how we should approach God in prayer."
+          ]
+        },
+        {
+          title: "2. Types of Prayer",
+          content: [
+            "**Adoration:** Praising God for who He is (Psalm 100:4)",
+            "**Confession:** Acknowledging our sins before God (1 John 1:9)",
+            "**Thanksgiving:** Expressing gratitude for God's blessings (Philippians 4:6)",
+            "**Supplication:** Making personal requests to God (Philippians 4:6-7)",
+            "**Intercession:** Praying on behalf of others (1 Timothy 2:1-2)"
+          ]
+        },
+        {
+          title: "3. Principles of Effective Prayer",
+          content: [
+            "**Pray in Faith:** Believe that God hears and will answer (Mark 11:24; James 1:6)",
+            "**Pray According to God's Will:** Align requests with Scripture (1 John 5:14-15)",
+            "**Pray with a Clean Heart:** Confess known sins before praying (Psalm 66:18)",
+            "**Pray Persistently:** Continue in prayer without giving up (Luke 18:1-8)",
+            "**Pray in Jesus' Name:** Access the Father through Christ (John 14:13-14)"
+          ]
+        },
+        {
+          title: "4. Hindrances to Prayer",
+          content: [
+            "Unconfessed sin can block our prayers (Isaiah 59:2)",
+            "Unforgiveness towards others hinders prayer (Mark 11:25)",
+            "Wrong motives can prevent answers (James 4:3)",
+            "Doubt and unbelief limit what we receive (James 1:6-7)",
+            "Neglecting the needs of others affects our prayers (Proverbs 21:13)"
+          ]
+        },
+        {
+          title: "5. Developing a Prayer Life",
+          content: [
+            "Set aside specific times daily for prayer (Daniel 6:10)",
+            "Find a quiet place free from distractions (Matthew 6:6)",
+            "Use Scripture to guide your prayers",
+            "Keep a prayer journal to track requests and answers",
+            "Join with other believers in corporate prayer (Matthew 18:19-20)"
+          ]
+        }
+      ],
+      scripture: {
+        text: "Rejoice always, pray without ceasing, give thanks in all circumstances; for this is the will of God in Christ Jesus for you.",
+        reference: "1 Thessalonians 5:16-18"
+      },
+      keyPoints: [
+        "Prayer is direct communication with God—speaking and listening",
+        "Different types of prayer serve different purposes in our relationship with God",
+        "Effective prayer requires faith, alignment with God's will, and a clean heart",
+        "Sin, unforgiveness, and wrong motives can hinder our prayers",
+        "A consistent prayer life requires discipline and intentionality"
+      ],
+      reflection: "Evaluate your current prayer life. Are there any hindrances you need to address? Commit to developing a more consistent and effective prayer life by setting specific times and places for communion with God."
+    }
+  },
+  {
+    id: 4,
+    title: "The Holy Spirit",
+    duration: "30 min",
+    content: {
+      introduction: "The Holy Spirit is the third Person of the Trinity—coequal with the Father and the Son. He is not merely a force or influence, but a divine Person who indwells believers, empowers them for service, and guides them into all truth. Understanding the Holy Spirit is essential for victorious Christian living.",
+      sections: [
+        {
+          title: "1. The Person of the Holy Spirit",
+          content: [
+            "The Holy Spirit is God—fully divine and coequal with the Father and Son (Acts 5:3-4; 2 Corinthians 13:14)",
+            "**The Holy Spirit has personal attributes:** Intelligence (1 Corinthians 2:10-11), Will (1 Corinthians 12:11), Emotions (Ephesians 4:30)",
+            "**The Holy Spirit performs personal actions:** He teaches (John 14:26), guides (Romans 8:14), intercedes (Romans 8:26-27), and convicts (John 16:8)"
+          ]
+        },
+        {
+          title: "2. The Work of the Holy Spirit",
+          content: [
+            "**In Salvation:** He convicts of sin, righteousness, and judgment (John 16:8-11). He regenerates believers (Titus 3:5) and seals them for the day of redemption (Ephesians 1:13-14).",
+            "**In Sanctification:** He transforms believers into Christ's likeness (2 Corinthians 3:18) and produces spiritual fruit (Galatians 5:22-23).",
+            "**In Empowerment:** He gives power for witness and service (Acts 1:8) and distributes spiritual gifts (1 Corinthians 12:4-11)."
+          ]
+        },
+        {
+          title: "3. The Fruit of the Spirit",
+          content: [
+            "Galatians 5:22-23 lists the fruit of the Spirit: love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, and self-control.",
+            "The fruit of the Spirit is evidence of the Spirit's work in a believer's life.",
+            "Unlike spiritual gifts which are distributed individually, all believers should exhibit all aspects of the fruit.",
+            "The fruit grows through abiding in Christ and yielding to the Spirit's work (John 15:4-5)."
+          ]
+        },
+        {
+          title: "4. The Gifts of the Spirit",
+          content: [
+            "Spiritual gifts are supernatural abilities given by the Holy Spirit for the edification of the Church (1 Corinthians 12:7).",
+            "**Categories of Gifts:** Speaking gifts (prophecy, teaching, tongues), Serving gifts (helps, administration, mercy), Sign gifts (healing, miracles, faith).",
+            "Every believer has at least one spiritual gift (1 Peter 4:10).",
+            "Gifts are to be used in love for the common good (1 Corinthians 13; 14:12)."
+          ]
+        },
+        {
+          title: "5. Being Filled with the Spirit",
+          content: [
+            "Ephesians 5:18 commands believers to be continually filled with the Spirit.",
+            "**How to be filled:** Confess all known sin, surrender fully to Christ, ask in faith for the Spirit's filling, walk in obedience.",
+            "Being filled is not a one-time event but a continual experience as we yield to God daily.",
+            "The evidence of being Spirit-filled includes boldness in witness, power over sin, and manifestation of spiritual fruit."
+          ]
+        }
+      ],
+      scripture: {
+        text: "But the fruit of the Spirit is love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, self-control; against such things there is no law.",
+        reference: "Galatians 5:22-23"
+      },
+      keyPoints: [
+        "The Holy Spirit is a divine Person, not merely a force or influence",
+        "He convicts, regenerates, seals, sanctifies, and empowers believers",
+        "The fruit of the Spirit should be evident in every believer's life",
+        "Spiritual gifts are given to edify the Church and should be used in love",
+        "Being filled with the Spirit is a continual experience of yielding to God"
+      ],
+      reflection: "Are you walking in the power of the Holy Spirit daily? Examine your life for evidence of the Spirit's fruit. Ask God to fill you afresh with His Spirit and to help you use your spiritual gifts for His glory."
+    }
+  },
+  {
+    id: 5,
+    title: "Understanding Salvation",
+    duration: "25 min",
+    content: {
+      introduction: "Salvation is God's gracious work of rescuing humanity from sin and its consequences. Through the death and resurrection of Jesus Christ, God has provided a way for all who believe to be forgiven, reconciled to Him, and granted eternal life. Understanding salvation is foundational to the Christian faith.",
+      sections: [
+        {
+          title: "1. The Need for Salvation",
+          content: [
+            "All have sinned and fall short of God's glory (Romans 3:23)",
+            "Sin separates us from God (Isaiah 59:2)",
+            "The wages of sin is death—spiritual separation from God (Romans 6:23)",
+            "No human effort can earn salvation (Ephesians 2:8-9; Titus 3:5)",
+            "Every person needs a Savior to be reconciled to God"
+          ]
+        },
+        {
+          title: "2. The Provision of Salvation",
+          content: [
+            "God loved the world and sent His Son (John 3:16)",
+            "Jesus lived a sinless life and died as a substitute for sinners (2 Corinthians 5:21; 1 Peter 3:18)",
+            "His blood atones for sin and cleanses from all unrighteousness (1 John 1:7; Hebrews 9:22)",
+            "Jesus rose from the dead, conquering sin and death (Romans 4:25; 1 Corinthians 15:3-4)",
+            "Salvation is offered freely to all who believe (Romans 10:9-10)"
+          ]
+        },
+        {
+          title: "3. How to Receive Salvation",
+          content: [
+            "**Acknowledge your sin:** Recognize your need for a Savior (Luke 18:13)",
+            "**Believe in Jesus Christ:** Trust that He died for your sins and rose again (Acts 16:31; Romans 10:9)",
+            "**Confess Jesus as Lord:** Publicly declare your faith in Him (Romans 10:10)",
+            "**Repent of sin:** Turn away from your old life and toward God (Acts 3:19)",
+            "**Receive new life:** Be born again by the Spirit (John 3:3-7)"
+          ]
+        },
+        {
+          title: "4. The Results of Salvation",
+          content: [
+            "**Justification:** Declared righteous before God (Romans 5:1)",
+            "**Adoption:** Welcomed into God's family as children (John 1:12; Galatians 4:5-6)",
+            "**Forgiveness:** All sins past, present, and future are forgiven (Colossians 2:13-14)",
+            "**Eternal Life:** Guaranteed life with God forever (John 5:24; 1 John 5:11-13)",
+            "**The Indwelling Spirit:** The Holy Spirit lives within (Romans 8:9-11)"
+          ]
+        },
+        {
+          title: "5. Assurance and Security of Salvation",
+          content: [
+            "Believers can have assurance of their salvation (1 John 5:13)",
+            "God keeps those who belong to Him secure (John 10:28-29; Philippians 1:6)",
+            "The Holy Spirit testifies with our spirit that we are God's children (Romans 8:16)",
+            "Changed life and love for others are evidence of genuine salvation (1 John 3:14)",
+            "We are sealed with the Holy Spirit until the day of redemption (Ephesians 1:13-14)"
+          ]
+        }
+      ],
+      scripture: {
+        text: "For by grace you have been saved through faith. And this is not your own doing; it is the gift of God, not a result of works, so that no one may boast.",
+        reference: "Ephesians 2:8-9"
+      },
+      keyPoints: [
+        "All people have sinned and need salvation—no one can save themselves",
+        "Jesus Christ died as a substitute for sinners and rose again",
+        "Salvation is received by grace through faith in Jesus Christ",
+        "The results include justification, adoption, forgiveness, and eternal life",
+        "Believers can have full assurance of their salvation"
+      ],
+      reflection: "If you have received salvation, thank God for His amazing grace. If you have not, today is the day of salvation. Confess your sins, believe in Jesus Christ, and receive the gift of eternal life."
+    }
+  },
+  {
+    id: 6,
+    title: "Christian Stewardship",
+    duration: "20 min",
+    content: {
+      introduction: "Stewardship is the responsible management of all that God has entrusted to us. As believers, we recognize that everything we have—time, talents, treasure, and opportunities—belongs to God. We are merely managers, accountable to Him for how we use these resources for His glory and the advancement of His Kingdom.",
+      sections: [
+        {
+          title: "1. The Foundation of Stewardship",
+          content: [
+            "God is the owner of all things (Psalm 24:1; Haggai 2:8)",
+            "We are stewards, not owners, of what God has given (1 Corinthians 4:2)",
+            "We will give account for how we manage God's resources (Matthew 25:14-30)",
+            "Stewardship is an act of worship and gratitude to God (Romans 12:1)",
+            "Faithful stewardship reflects our trust in God's provision"
+          ]
+        },
+        {
+          title: "2. Stewardship of Time",
+          content: [
+            "Time is a precious gift from God that cannot be reclaimed once spent (Ephesians 5:15-16)",
+            "Prioritize time for God—worship, prayer, and Bible study (Matthew 6:33)",
+            "Balance work, rest, family, and service to others (Ecclesiastes 3:1-8)",
+            "Avoid wasting time on unprofitable pursuits (Ephesians 5:11)",
+            "Use time intentionally for eternal purposes (Colossians 4:5)"
+          ]
+        },
+        {
+          title: "3. Stewardship of Talents",
+          content: [
+            "God gives each person unique abilities and gifts (Romans 12:6-8; 1 Peter 4:10)",
+            "Talents are to be developed and used for God's glory (Matthew 25:14-30)",
+            "Hiding or neglecting gifts is unfaithfulness (Matthew 25:24-28)",
+            "Serve others with your gifts in humility (1 Peter 4:10-11)",
+            "The Church is strengthened when each member uses their gifts (1 Corinthians 12:12-27)"
+          ]
+        },
+        {
+          title: "4. Stewardship of Treasure",
+          content: [
+            "**Tithing:** Giving the first tenth to God as an act of honor and trust (Malachi 3:10; Proverbs 3:9-10)",
+            "**Offerings:** Giving beyond the tithe as God prospers and leads (2 Corinthians 9:7)",
+            "Give cheerfully, not reluctantly or under compulsion (2 Corinthians 9:6-7)",
+            "Store up treasures in heaven, not on earth (Matthew 6:19-21)",
+            "Generous giving leads to God's abundant blessing (Luke 6:38; 2 Corinthians 9:8)"
+          ]
+        },
+        {
+          title: "5. Rewards of Faithful Stewardship",
+          content: [
+            "God promises to open the windows of heaven for faithful givers (Malachi 3:10)",
+            "Faithful stewards will hear 'Well done, good and faithful servant' (Matthew 25:21)",
+            "God entrusts more to those who are faithful with little (Luke 16:10-12)",
+            "Stewardship leads to contentment and freedom from materialism (1 Timothy 6:6-10)",
+            "Eternal rewards await faithful stewards (1 Corinthians 3:12-14)"
+          ]
+        }
+      ],
+      scripture: {
+        text: "Moreover, it is required of stewards that they be found faithful.",
+        reference: "1 Corinthians 4:2"
+      },
+      keyPoints: [
+        "God owns everything; we are stewards accountable to Him",
+        "We must wisely manage our time for eternal purposes",
+        "Our talents should be developed and used for God's glory",
+        "Tithing and generous giving honor God and invite His blessing",
+        "Faithful stewardship leads to greater responsibility and eternal rewards"
+      ],
+      reflection: "Evaluate your stewardship in each area—time, talents, and treasure. Are you managing God's resources faithfully? Ask God to help you be a more faithful steward for His glory."
+    }
   }
 ];
 
@@ -445,5 +724,249 @@ export const quizQuestions: QuizQuestion[] = [
       "Staff training"
     ],
     correctAnswer: 0
+  },
+  // Lesson 3: Prayer and Communion with God
+  {
+    id: 21,
+    lessonId: 3,
+    question: "What is prayer?",
+    options: [
+      "A religious ritual performed weekly",
+      "Direct communication with God",
+      "Reciting memorized phrases",
+      "Meditation on self-improvement"
+    ],
+    correctAnswer: 1
+  },
+  {
+    id: 22,
+    lessonId: 3,
+    question: "Which type of prayer involves praying on behalf of others?",
+    options: [
+      "Adoration",
+      "Confession",
+      "Supplication",
+      "Intercession"
+    ],
+    correctAnswer: 3
+  },
+  {
+    id: 23,
+    lessonId: 3,
+    question: "According to James 1:6, what hinders answered prayer?",
+    options: [
+      "Praying too often",
+      "Doubt and unbelief",
+      "Praying silently",
+      "Praying alone"
+    ],
+    correctAnswer: 1
+  },
+  {
+    id: 24,
+    lessonId: 3,
+    question: "What does 1 Thessalonians 5:17 instruct believers to do?",
+    options: [
+      "Pray once a day",
+      "Pray without ceasing",
+      "Pray only in church",
+      "Pray with others only"
+    ],
+    correctAnswer: 1
+  },
+  {
+    id: 25,
+    lessonId: 3,
+    question: "Which of the following is NOT a hindrance to prayer?",
+    options: [
+      "Unconfessed sin",
+      "Unforgiveness",
+      "Praying in Jesus' name",
+      "Wrong motives"
+    ],
+    correctAnswer: 2
+  },
+  // Lesson 4: The Holy Spirit
+  {
+    id: 26,
+    lessonId: 4,
+    question: "The Holy Spirit is:",
+    options: [
+      "Just a force or energy",
+      "An angel",
+      "The third Person of the Trinity",
+      "A symbol of God's power"
+    ],
+    correctAnswer: 2
+  },
+  {
+    id: 27,
+    lessonId: 4,
+    question: "Which scripture lists the fruit of the Spirit?",
+    options: [
+      "Romans 12:1-2",
+      "Galatians 5:22-23",
+      "Ephesians 6:10-18",
+      "1 Corinthians 13:4-7"
+    ],
+    correctAnswer: 1
+  },
+  {
+    id: 28,
+    lessonId: 4,
+    question: "What does the Holy Spirit give believers for service?",
+    options: [
+      "Natural talents only",
+      "Spiritual gifts",
+      "Wealth and prosperity",
+      "Political power"
+    ],
+    correctAnswer: 1
+  },
+  {
+    id: 29,
+    lessonId: 4,
+    question: "According to Acts 1:8, the Holy Spirit gives believers:",
+    options: [
+      "Wealth",
+      "Fame",
+      "Power to be witnesses",
+      "Long life"
+    ],
+    correctAnswer: 2
+  },
+  {
+    id: 30,
+    lessonId: 4,
+    question: "Ephesians 5:18 commands believers to:",
+    options: [
+      "Be filled with knowledge",
+      "Be filled with the Spirit",
+      "Be filled with works",
+      "Be filled with self-confidence"
+    ],
+    correctAnswer: 1
+  },
+  // Lesson 5: Understanding Salvation
+  {
+    id: 31,
+    lessonId: 5,
+    question: "According to Romans 3:23, who has sinned?",
+    options: [
+      "Only unbelievers",
+      "Only adults",
+      "All people",
+      "Only criminals"
+    ],
+    correctAnswer: 2
+  },
+  {
+    id: 32,
+    lessonId: 5,
+    question: "What is the wages of sin according to Romans 6:23?",
+    options: [
+      "Sickness",
+      "Poverty",
+      "Death",
+      "Loneliness"
+    ],
+    correctAnswer: 2
+  },
+  {
+    id: 33,
+    lessonId: 5,
+    question: "Salvation is received by:",
+    options: [
+      "Good works",
+      "Church membership",
+      "Grace through faith",
+      "Religious rituals"
+    ],
+    correctAnswer: 2
+  },
+  {
+    id: 34,
+    lessonId: 5,
+    question: "Which of the following is a result of salvation?",
+    options: [
+      "Guaranteed wealth",
+      "Justification before God",
+      "Freedom from all problems",
+      "Physical immortality"
+    ],
+    correctAnswer: 1
+  },
+  {
+    id: 35,
+    lessonId: 5,
+    question: "According to John 10:28-29, believers are:",
+    options: [
+      "Kept secure by God",
+      "Always at risk of losing salvation",
+      "Required to earn salvation daily",
+      "Saved by their own efforts"
+    ],
+    correctAnswer: 0
+  },
+  // Lesson 6: Christian Stewardship
+  {
+    id: 36,
+    lessonId: 6,
+    question: "According to Psalm 24:1, who owns everything?",
+    options: [
+      "Governments",
+      "The wealthy",
+      "The Lord",
+      "Individuals"
+    ],
+    correctAnswer: 2
+  },
+  {
+    id: 37,
+    lessonId: 6,
+    question: "What is a tithe?",
+    options: [
+      "Any amount given to church",
+      "The first tenth given to God",
+      "Money for the poor only",
+      "Monthly church dues"
+    ],
+    correctAnswer: 1
+  },
+  {
+    id: 38,
+    lessonId: 6,
+    question: "According to 2 Corinthians 9:7, how should we give?",
+    options: [
+      "Reluctantly",
+      "Under compulsion",
+      "Cheerfully",
+      "Secretly"
+    ],
+    correctAnswer: 2
+  },
+  {
+    id: 39,
+    lessonId: 6,
+    question: "What happens to those who are faithful with little (Luke 16:10)?",
+    options: [
+      "They receive nothing more",
+      "They are entrusted with more",
+      "They become wealthy",
+      "They are tested further"
+    ],
+    correctAnswer: 1
+  },
+  {
+    id: 40,
+    lessonId: 6,
+    question: "Which of the following is NOT an area of stewardship?",
+    options: [
+      "Time",
+      "Talents",
+      "Treasure",
+      "Temptation"
+    ],
+    correctAnswer: 3
   }
 ];

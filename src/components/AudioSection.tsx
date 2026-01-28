@@ -1,55 +1,120 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Play, Pause, SkipBack, SkipForward, Volume2 } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+declare global {
+  interface Window {
+    YT: any;
+    onYouTubeIframeAPIReady: () => void;
+  }
+}
 
 const AudioSection = () => {
   const { ref, isVisible } = useScrollAnimation();
+  const playerRef = useRef<any>(null);
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState(0);
 
   const audioTracks = [
-    { title: 'The Foundation of Faith', speaker: 'Pastor E.A. Adeboye', duration: '45:32' },
-    { title: 'Living a Life of Prayer', speaker: 'Pastor E.A. Adeboye', duration: '52:18' },
-    { title: 'Understanding Grace', speaker: 'Pastor E.A. Adeboye', duration: '38:45' },
-    { title: 'The Holy Spirit in You', speaker: 'Pastor E.A. Adeboye', duration: '41:20' },
-    { title: 'Growing in Holiness', speaker: 'Pastor E.A. Adeboye', duration: '49:15' },
+    {
+      title: 'The Foundation of Faith',
+      speaker: 'Pastor E.A. Adeboye',
+      duration: '45:32',
+      youtubeId: 'vY0lOSFxf7c',
+    },
+    {
+      title: 'Living a Life of Prayer',
+      speaker: 'Pastor E.A. Adeboye',
+      duration: '52:18',
+      youtubeId: 'bzQPt1-oYq0',
+    },
   ];
+
+  // Load YouTube IFrame API
+  useEffect(() => {
+    if (window.YT) return;
+
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.body.appendChild(tag);
+
+    window.onYouTubeIframeAPIReady = () => {
+      playerRef.current = new window.YT.Player('yt-player', {
+        videoId: audioTracks[currentTrack].youtubeId,
+        playerVars: {
+          controls: 0,
+          modestbranding: 1,
+          rel: 0,
+        },
+        events: {
+          onStateChange: (event: any) => {
+            setIsPlaying(event.data === window.YT.PlayerState.PLAYING);
+          },
+        },
+      });
+    };
+  }, []);
+
+  // Change track
+  useEffect(() => {
+    if (playerRef.current) {
+      playerRef.current.loadVideoById(audioTracks[currentTrack].youtubeId);
+      setIsPlaying(true);
+    }
+  }, [currentTrack]);
+
+  const togglePlay = () => {
+    if (!playerRef.current) return;
+
+    if (isPlaying) {
+      playerRef.current.pauseVideo();
+    } else {
+      playerRef.current.playVideo();
+    }
+  };
+
+  const prevTrack = () => {
+    setCurrentTrack((prev) => Math.max(0, prev - 1));
+  };
+
+  const nextTrack = () => {
+    setCurrentTrack((prev) => Math.min(audioTracks.length - 1, prev + 1));
+  };
 
   return (
     <section id="audio" className="py-20 bg-primary text-primary-foreground">
       <div className="section-container">
-        <div
-          ref={ref}
-          className={`${isVisible ? 'animate-fade-up' : 'opacity-0'}`}
-        >
-          {/* Section Header */}
+        <div ref={ref} className={isVisible ? 'animate-fade-up' : 'opacity-0'}>
+          {/* Hidden YouTube Player */}
+          <div className="hidden">
+            <div id="yt-player" />
+          </div>
+
+          {/* Header */}
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-gold-light font-medium tracking-wide uppercase text-sm font-body">
+            <span className="text-gold-light uppercase text-sm font-medium">
               Listen & Learn
             </span>
-            <h2 className="font-body text-3xl md:text-4xl font-bold mt-3 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mt-3 mb-4">
               Audio Messages
             </h2>
-            <p className="text-primary-foreground/80 text-lg font-body">
-              Take the Word with you wherever you go. Listen to life-changing 
-              audio messages that will strengthen your faith.
+            <p className="text-primary-foreground/80 text-lg">
+              Take the Word with you wherever you go.
             </p>
           </div>
 
-          {/* Audio Player */}
+          {/* Player */}
           <div className="max-w-3xl mx-auto">
-            {/* Now Playing Card */}
-            <div className="bg-primary-foreground/10 backdrop-blur-sm rounded-2xl p-8 mb-6">
-              <div className="flex flex-col md:flex-row items-center gap-6">
-                {/* Album Art */}
-                <div className="w-32 h-32 rounded-xl bg-gradient-to-br from-accent to-gold-light flex items-center justify-center shrink-0">
+            <div className="bg-primary-foreground/10 rounded-2xl p-8 mb-6">
+              <div className="flex items-center gap-6">
+                <div className="w-32 h-32 rounded-xl bg-gradient-to-br from-accent to-gold-light flex items-center justify-center">
                   <Volume2 className="w-12 h-12 text-accent-foreground" />
                 </div>
 
-                {/* Track Info */}
-                <div className="flex-1 text-center md:text-left font-body">
-                  <p className="text-gold-light text-sm font-medium mb-1">Now Playing</p>
-                  <h3 className="font-body text-2xl font-bold mb-1">
+                <div className="flex-1">
+                  <p className="text-gold-light text-sm mb-1">Now Playing</p>
+                  <h3 className="text-2xl font-bold">
                     {audioTracks[currentTrack].title}
                   </h3>
                   <p className="text-primary-foreground/70">
@@ -58,75 +123,41 @@ const AudioSection = () => {
                 </div>
               </div>
 
-              {/* Progress Bar */}
-              <div className="mt-6">
-                <div className="h-2 bg-primary-foreground/20 rounded-full overflow-hidden">
-                  <div className="h-full w-1/3 bg-accent rounded-full transition-all duration-300" />
-                </div>
-                <div className="flex justify-between text-sm text-primary-foreground/60 mt-2 font-body">
-                  <span>15:24</span>
-                  <span>{audioTracks[currentTrack].duration}</span>
-                </div>
-              </div>
-
               {/* Controls */}
-              <div className="flex items-center justify-center gap-6 mt-6">
-                <button
-                  onClick={() => setCurrentTrack(Math.max(0, currentTrack - 1))}
-                  className="p-3 hover:bg-primary-foreground/10 rounded-full transition-colors"
-                >
-                  <SkipBack className="w-6 h-6" />
+              <div className="flex justify-center gap-6 mt-8">
+                <button onClick={prevTrack} className="p-3 hover:bg-white/10 rounded-full">
+                  <SkipBack />
                 </button>
+
                 <button
-                  onClick={() => setIsPlaying(!isPlaying)}
-                  className="p-4 bg-accent text-accent-foreground rounded-full hover:scale-105 transition-transform shadow-lg"
+                  onClick={togglePlay}
+                  className="p-4 bg-accent text-accent-foreground rounded-full"
                 >
-                  {isPlaying ? (
-                    <Pause className="w-8 h-8" />
-                  ) : (
-                    <Play className="w-8 h-8 ml-1" />
-                  )}
+                  {isPlaying ? <Pause /> : <Play className="ml-1" />}
                 </button>
-                <button
-                  onClick={() => setCurrentTrack(Math.min(audioTracks.length - 1, currentTrack + 1))}
-                  className="p-3 hover:bg-primary-foreground/10 rounded-full transition-colors"
-                >
-                  <SkipForward className="w-6 h-6" />
+
+                <button onClick={nextTrack} className="p-3 hover:bg-white/10 rounded-full">
+                  <SkipForward />
                 </button>
               </div>
             </div>
 
             {/* Playlist */}
-            <div className="bg-primary-foreground/5 rounded-xl overflow-hidden font-body">
-              <h4 className="font-medium p-4 border-b border-primary-foreground/10">
-                Recommended for New Believers
-              </h4>
+            <div className="bg-primary-foreground/5 rounded-xl">
               {audioTracks.map((track, index) => (
                 <button
-                  key={track.title}
+                  key={track.youtubeId}
                   onClick={() => setCurrentTrack(index)}
-                  className={`w-full flex items-center gap-4 p-4 hover:bg-primary-foreground/10 transition-colors text-left ${
-                    currentTrack === index ? 'bg-primary-foreground/10' : ''
+                  className={`w-full p-4 text-left hover:bg-white/10 ${
+                    currentTrack === index ? 'bg-white/10' : ''
                   }`}
                 >
-                  <span className="w-8 h-8 rounded-full bg-primary-foreground/10 flex items-center justify-center text-sm">
-                    {currentTrack === index && isPlaying ? (
-                      <span className="flex gap-0.5">
-                        <span className="w-1 h-3 bg-accent animate-pulse" />
-                        <span className="w-1 h-3 bg-accent animate-pulse delay-100" />
-                        <span className="w-1 h-3 bg-accent animate-pulse delay-200" />
-                      </span>
-                    ) : (
-                      index + 1
-                    )}
-                  </span>
-                  <div className="flex-1">
-                    <p className={`font-medium ${currentTrack === index ? 'text-accent' : ''}`}>
-                      {track.title}
-                    </p>
-                    <p className="text-sm text-primary-foreground/60">{track.speaker}</p>
-                  </div>
-                  <span className="text-sm text-primary-foreground/60">{track.duration}</span>
+                  <p className={currentTrack === index ? 'text-accent font-medium' : ''}>
+                    {track.title}
+                  </p>
+                  <p className="text-sm text-primary-foreground/60">
+                    {track.speaker} • {track.duration}
+                  </p>
                 </button>
               ))}
             </div>

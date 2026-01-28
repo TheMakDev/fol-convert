@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { Award, Download, Home } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -73,14 +72,20 @@ const Certificate = ({ score, userName }: CertificateProps) => {
               <p className="text-sm text-muted-foreground">Date of Completion</p>
               <p className="font-medium text-foreground">{currentDate}</p>
             </div>
+
             <div className="text-center">
-              {/* Signature */}
-              <p className="font-heading text-2xl italic text-primary" style={{ fontFamily: 'cursive' }}>
+              {/* Real Signature Image */}
+              <img
+                src="https://pixabay.com/images/download/x-7083534_1920.png"
+                alt="Pastor Jude Olisa Signature"
+                className="mx-auto h-16 object-contain"
+              />
+
+              <div className="w-40 border-t border-gold mt-1 mb-2 mx-auto" />
+
+              <p className="text-sm font-medium text-foreground">
                 Pastor Jude Olisa
               </p>
-              <div className="w-40 border-t border-gold mt-1 mb-2 mx-auto" />
-              <p className="text-sm font-medium text-foreground">Pastor Jude Olisa</p>
-              <p className="text-xs text-muted-foreground">Pastor in charge</p>
             </div>
           </div>
 

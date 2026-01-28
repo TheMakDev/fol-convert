@@ -138,9 +138,11 @@ const LessonsSection = () => {
 
         {/* View All Button */}
         <div className="text-center mt-12">
+          <Link to="/course">
           <Button variant="gold" size="lg">
             View All Lessons
           </Button>
+          </Link>
         </div>
       </div>
     </section>
