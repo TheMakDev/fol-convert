@@ -6,20 +6,22 @@ interface CourseSidebarProps {
   lessons: Lesson[];
   currentLessonIndex: number;
   completedLessons: number[];
+  lessonQuizCompleted: number[];
   onSelectLesson: (index: number) => void;
-  showQuiz: boolean;
+  showFinalQuiz: boolean;
   quizPassed: boolean | null;
-  onSelectQuiz: () => void;
+  onSelectFinalQuiz: () => void;
 }
 
 const CourseSidebar = ({
   lessons,
   currentLessonIndex,
   completedLessons,
+  lessonQuizCompleted,
   onSelectLesson,
-  showQuiz,
+  showFinalQuiz,
   quizPassed,
-  onSelectQuiz,
+  onSelectFinalQuiz,
 }: CourseSidebarProps) => {
   const allLessonsCompleted = completedLessons.length === lessons.length;
 
@@ -27,7 +29,7 @@ const CourseSidebar = ({
     <div className="bg-card border-r border-border h-full overflow-y-auto">
       {/* Course Header */}
       <div className="p-6 border-b border-border">
-        <h2 className="font-body text-lg font-semibold text-foreground">
+        <h2 className="font-heading text-lg font-semibold text-foreground">
           Foundations of Faith
         </h2>
         <p className="text-sm text-muted-foreground mt-1">
@@ -46,7 +48,8 @@ const CourseSidebar = ({
       <nav className="p-4 space-y-2">
         {lessons.map((lesson, index) => {
           const isCompleted = completedLessons.includes(lesson.id);
-          const isCurrent = !showQuiz && currentLessonIndex === index;
+          const hasPassedQuiz = lessonQuizCompleted.includes(lesson.id);
+          const isCurrent = !showFinalQuiz && currentLessonIndex === index;
           const isLocked = !isCompleted && index > 0 && !completedLessons.includes(lessons[index - 1].id);
 
           return (
@@ -62,7 +65,7 @@ const CourseSidebar = ({
               )}
             >
               <div className="shrink-0 mt-0.5">
-                {isCompleted ? (
+                {isCompleted && hasPassedQuiz ? (
                   <CheckCircle2 className="w-5 h-5 text-primary" />
                 ) : isLocked ? (
                   <Lock className="w-5 h-5 text-muted-foreground" />
@@ -78,22 +81,22 @@ const CourseSidebar = ({
                   {lesson.id}. {lesson.title}
                 </p>
                 <p className="text-xs text-muted-foreground mt-1">
-                  {lesson.duration}
+                  {lesson.duration} {hasPassedQuiz && "• Quiz passed ✓"}
                 </p>
               </div>
             </button>
           );
         })}
 
-        {/* Quiz Section */}
+        {/* Final Assessment Section */}
         <div className="pt-4 mt-4 border-t border-border">
           <button
-            onClick={onSelectQuiz}
+            onClick={onSelectFinalQuiz}
             disabled={!allLessonsCompleted}
             className={cn(
               "w-full flex items-start gap-3 p-4 rounded-xl text-left transition-all",
-              showQuiz && "bg-accent/10 border border-accent/30",
-              !showQuiz && allLessonsCompleted && "hover:bg-muted",
+              showFinalQuiz && "bg-accent/10 border border-accent/30",
+              !showFinalQuiz && allLessonsCompleted && "hover:bg-muted",
               !allLessonsCompleted && "opacity-50 cursor-not-allowed"
             )}
           >
@@ -103,18 +106,18 @@ const CourseSidebar = ({
               ) : !allLessonsCompleted ? (
                 <Lock className="w-5 h-5 text-muted-foreground" />
               ) : (
-                <FileQuestion className={cn("w-5 h-5", showQuiz ? "text-accent" : "text-muted-foreground")} />
+                <FileQuestion className={cn("w-5 h-5", showFinalQuiz ? "text-accent" : "text-muted-foreground")} />
               )}
             </div>
             <div className="flex-1 min-w-0">
               <p className={cn(
                 "font-medium text-sm",
-                showQuiz ? "text-accent" : "text-foreground"
+                showFinalQuiz ? "text-accent" : "text-foreground"
               )}>
                 Final Assessment
               </p>
               <p className="text-xs text-muted-foreground mt-1">
-                {quizPassed ? "Passed!" : "10 questions • 70% to pass"}
+                {quizPassed ? "Passed! Certificate earned" : `${lessons.length * 5} questions • 70% to pass`}
               </p>
             </div>
           </button>

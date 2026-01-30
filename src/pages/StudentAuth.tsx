@@ -145,7 +145,7 @@ const StudentAuth = () => {
         <Card className="border-border shadow-soft">
           <CardHeader className="text-center space-y-4">
             <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-              <BookOpen className="w-8 h-8 text-primary" />
+              <img src="https://www.festivaloflife.org.uk/_next/image?url=%2Flogo.png&w=64&q=75" alt="" />
             </div>
             <CardTitle className="font-body text-2xl">
               Foundations of Faith

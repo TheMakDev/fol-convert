@@ -17,7 +17,7 @@ const LessonContent = ({ lesson, onComplete, isLastLesson }: LessonContentProps)
           <BookOpen className="w-5 h-5" />
           <span>Lesson {lesson.id} • {lesson.duration} read</span>
         </div>
-        <h1 className="font-body text-3xl md:text-4xl font-bold text-foreground">
+        <h1 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
           {lesson.title}
         </h1>
       </div>
@@ -31,7 +31,7 @@ const LessonContent = ({ lesson, onComplete, isLastLesson }: LessonContentProps)
       <div className="space-y-10">
         {lesson.content.sections.map((section, sectionIndex) => (
           <div key={sectionIndex} className="space-y-4">
-            <h2 className="font-body text-xl md:text-2xl font-semibold text-foreground border-b border-border/30 pb-3">
+            <h2 className="font-heading text-xl md:text-2xl font-semibold text-foreground border-b border-border/30 pb-3">
               {section.title}
             </h2>
             <div className="space-y-4">
@@ -64,7 +64,7 @@ const LessonContent = ({ lesson, onComplete, isLastLesson }: LessonContentProps)
 
       {/* Key Points */}
       <div className="bg-card rounded-2xl p-8 border border-border/30">
-        <h3 className="font-body text-xl font-semibold text-foreground mb-6 flex items-center gap-3">
+        <h3 className="font-heading text-xl font-semibold text-foreground mb-6 flex items-center gap-3">
           <Lightbulb className="w-6 h-6 text-accent" />
           Key Points to Remember
         </h3>
@@ -80,7 +80,7 @@ const LessonContent = ({ lesson, onComplete, isLastLesson }: LessonContentProps)
 
       {/* Reflection */}
       <div className="bg-primary/5 rounded-2xl p-8 border border-primary/20">
-        <h3 className="font-body text-xl font-semibold text-foreground mb-4">
+        <h3 className="font-heading text-xl font-semibold text-foreground mb-4">
           Take a Moment to Reflect
         </h3>
         <p className="text-muted-foreground italic leading-relaxed">
@@ -91,7 +91,7 @@ const LessonContent = ({ lesson, onComplete, isLastLesson }: LessonContentProps)
       {/* Complete Button */}
       <div className="pt-6 flex justify-end">
         <Button variant="gold" size="lg" onClick={onComplete}>
-          {isLastLesson ? 'Proceed to Quiz' : 'Complete & Continue'}
+          Take Lesson Quiz
         </Button>
       </div>
     </div>

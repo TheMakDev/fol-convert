@@ -30,7 +30,7 @@ import { lessons } from '@/data/courseData';
 /* ================= CONFIG ================= */
 
 const API_URL =
-  import.meta.env.VITE_API_URL || 'https://fols-backend.onrender.com';
+  import.meta.env.VITE_API_URL || 'https://fols-g2b2avfyg9b8aed8.canadacentral-01.azurewebsites.net';
 
 /* ================= TYPES ================= */
 

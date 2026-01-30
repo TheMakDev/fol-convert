@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/card";
 import { Lock, User, AlertCircle ,ArrowLeft} from "lucide-react";
 
-const API_URL = import.meta.env.VITE_API_URL || "https://fols-backend.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL || "https://fols-g2b2avfyg9b8aed8.canadacentral-01.azurewebsites.net";
 
 
 const AdminLogin = () => {
